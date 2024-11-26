@@ -1,0 +1,3 @@
+sanic==24.6.0
+strawberry==3.0
+tortoise==0.1.1
