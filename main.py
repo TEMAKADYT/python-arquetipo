@@ -1,27 +1,26 @@
-# from sanic import Sanic
-# from strawberry.sanic.views import GraphQLView
-# import strawberry
-# from strawberry.utils import typing
-# from tortoise.models import Model
-# from tortoise import fields
-# from tortoise.contrib.sanic import register_tortoise
-# from tortoise import Tortoise, run_async
-# from config import TORTOISE_ORM
+from sanic import Sanic
+from strawberry.sanic.views import GraphQLView
+import strawberry
+from strawberry.utils import typing
+from tortoise.models import Model
+from tortoise import fields
+from tortoise.contrib.sanic import register_tortoise
+from tortoise import Tortoise, run_async
+from config import TORTOISE_ORM
+
+## === GRAPHQL DEFINITION
+@strawberry.type
+class Book:
+    title: str
+    author: str
+
+def get_books():
+    return [] # BookModel.all()
 
 
-# ## === GRAPHQL DEFINITION
-# @strawberry.type
-# class Book:
-#     title: str
-#     author: str
-
-# def get_books():
-#     return BookModel.all()
-
-
-# @strawberry.type
-# class Query:
-#     books: typing.List[Book] = strawberry.field(resolver=get_books)
+@strawberry.type
+class Query:
+    books: typing.List[Book] = strawberry.field(resolver=get_books)
 
 # ## === ORM DEFINITION
 
@@ -34,10 +33,6 @@
 #     # represent of model in debugger and interpreter
 #     def __str__(self):
 #         return self.title + " - " + self.author
-
-
-# schema = strawberry.Schema(query=Query)
-# app = Sanic(__name__)
 
 # # register_tortoise(
 # #     app, db_url="postgres://postgres:12345678@localhost:55432/sanictest", modules={"models": ["server"]}, generate_schemas=True
@@ -52,15 +47,6 @@
 # if __name__ == "__main__":
 #     run_async(init())
 
-
-# app.add_route(
-#     GraphQLView.as_view(schema=schema, graphiql=True),
-#     "/read-api",
-# )
-#
-from tortoise import Tortoise, run_async
-from config import TORTOISE_ORM
-
 async def init():
     # Initialize Tortoise with the config from config.py
     await Tortoise.init(config=TORTOISE_ORM)
@@ -69,3 +55,12 @@ async def init():
 
 if __name__ == "__main__":
     run_async(init())
+
+schema = strawberry.Schema(query=Query)
+app = Sanic(__name__)
+
+
+app.add_route(
+    GraphQLView.as_view(schema=schema, graphiql=True),
+    "/read-api",
+)
