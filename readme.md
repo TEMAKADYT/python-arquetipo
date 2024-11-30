@@ -2,7 +2,7 @@
   pip install -r requirements.txt
 
 # Start server
-  sanic main
+  sanic server
 
 # Freeze requirements
   pip install pipreqs
@@ -44,3 +44,24 @@ Estructura del proyecto
     │   └── main.py            # Punto de entrada (Sanic)
     │
     └── tests/                 # Pruebas unitarias y de integración
+
+
+
+## PROXIMAS ACTIVIDADES
+
+[ X ] Crear modelos
+[ X ] Ejecutar migraciones
+[ X ] Crear repositorios
+
+[ ] Diseñar casos de uso
+[ ] Implementar casos de uso
+
+[ ] Diseñar queries
+[ ] Implementar queries
+[ ] Diseñar mutaciones
+[ ] Implementar mutaciones
+
+[ ] Diseñar pruebas
+[ ] Implementar pruebas
+
+[ ] Implementar loggin del SQL
