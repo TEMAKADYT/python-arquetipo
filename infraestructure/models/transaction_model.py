@@ -1,5 +1,5 @@
 from tortoise import fields
-from .BaseModel import BaseModel
+from .base_model import BaseModel
 
 class TransactionModel(BaseModel):
     amount = fields.FloatField(null=False)
@@ -17,6 +17,6 @@ class TransactionModel(BaseModel):
         # interpolate princial fields
         return f"{self.type} - {self.description} - {self.amount}"
 
-    class Meta(BaseModel.Meta):
+    class Meta:
         table = "transactions"
         ordering = ["date"]

@@ -1,8 +1,8 @@
-from origamiapp.core.entities import Transaction
-from origamiapp.infraestructure.models import TransactionModel
+from core.entities import TransactionEntity
+from infraestructure.models import TransactionModel
 
 def transactionFromModel(transactionModel : TransactionModel):
-    return Transaction(
+    return TransactionEntity(
         transactionModel.id,
         transactionModel.amount,
         transactionModel.description,

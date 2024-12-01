@@ -18,7 +18,7 @@ class SubAccountType(Enum):
     PF = "pasivo_fijo"
 
 @dataclass
-class Transaction:
+class TransactionEntity:
     """ Class que representa las transacciones realizadas y su clasificacion general """
     id: int
     amount: float

@@ -1,9 +1,9 @@
-from tortoise.models import Model
-from tortoise import fields
+from tortoise import fields, models
 from datetime import datetime
-from origamiapp.infraestructure.db.LogicalDeleteManager import WithLogicalDeleteManager
+from infraestructure.db.logical_delete_manager import WithLogicalDeleteManager
 from tortoise.manager import Manager
-class BaseModel(Model):
+
+class BaseModel(models.Model):
 
     # Use an integer field as the primary key
     id = fields.IntField(pk=True)
@@ -18,7 +18,6 @@ class BaseModel(Model):
     # Can search from the deleted records
     with_deleted = Manager()
 
-
     class Meta:
         abstract = True
 
@@ -30,7 +29,6 @@ class BaseModel(Model):
         #            FullTextIndex(fields={"full_text"}, parser_name="ngram"),
         #            SpatialIndex(fields={"geometry"}),
         #        ]
-
 
     async def soft_delete(self) -> None:
         """

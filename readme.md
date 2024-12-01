@@ -2,14 +2,15 @@
   pip install -r requirements.txt
 
 # Start server
-  sanic server
+  sanic server --dev
 
 # Freeze requirements
   pip install pipreqs
   pipreqs .
 
 # Initializing Migrations (only once when the project is created)
-  aerich init -t config.TORTOISE_ORM
+  aerich init --location infraestructure/migrations -t config.TORTOISE_ORM
+  python init.py
   aerich init-db
 
 # Create Migrations
@@ -53,7 +54,7 @@ Estructura del proyecto
 [ X ] Ejecutar migraciones
 [ X ] Crear repositorios
 
-[ ] Diseñar casos de uso
+[ X ] Diseñar casos de uso
 [ ] Implementar casos de uso
 
 [ ] Diseñar queries
@@ -65,3 +66,7 @@ Estructura del proyecto
 [ ] Implementar pruebas
 
 [ ] Implementar loggin del SQL
+
+
+## CLEAN CACHE
+    find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
