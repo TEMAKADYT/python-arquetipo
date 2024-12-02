@@ -51,6 +51,9 @@ Estructura del proyecto
     Utiliza gitcommit para realizar commits basado en el estandar de commit de conventionalcommits
     mas informacion en: https://www.conventionalcommits.org/en/v1.0.0/#summary
 
+# Calcular version actual
+    semantic-release version
+
 ## PROXIMAS ACTIVIDADES
 
 [ X ] Crear modelos
