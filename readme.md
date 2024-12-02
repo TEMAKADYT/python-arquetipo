@@ -55,12 +55,14 @@ Estructura del proyecto
 [ X ] Crear repositorios
 
 [ X ] Diseñar casos de uso
-[ ] Implementar casos de uso
+[ X ] Implementar casos de uso
 
-[ ] Diseñar queries
-[ ] Implementar queries
-[ ] Diseñar mutaciones
-[ ] Implementar mutaciones
+[ 40% ] Diseñar queries
+[ 40% ] Implementar queries
+[ 20% ] Diseñar mutaciones
+[ 20% ] Implementar mutaciones
+
+[ X ] Refactorizacion Strawberry graphQL
 
 [ ] Diseñar pruebas
 [ ] Implementar pruebas

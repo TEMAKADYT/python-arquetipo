@@ -2,6 +2,7 @@ from tortoise import fields, models
 from datetime import datetime
 from infraestructure.db.logical_delete_manager import WithLogicalDeleteManager
 from tortoise.manager import Manager
+from tortoise.models import Model
 
 class BaseModel(models.Model):
 
@@ -17,12 +18,12 @@ class BaseModel(models.Model):
 
     # Can search from the deleted records
     with_deleted = Manager()
+    objects = WithLogicalDeleteManager()
 
-    class Meta:
+    class Meta(Model.Meta):
         abstract = True
 
         # Ignore Soft Deleted records
-        manager = WithLogicalDeleteManager()
 
         # Example of indexes
         # indexes = [
