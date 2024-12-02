@@ -3,4 +3,5 @@ strawberry==3.0
 tortoise==0.1.1
 pytest==8.3.3
 pytest-asyncio==0.24.0
-sanic-testing=24.6.0
+sanic-testing==24.6.0
+conventional-commit==0.4.2

@@ -47,6 +47,9 @@ Estructura del proyecto
     └── tests/                 # Pruebas unitarias y de integración
 
 
+# Guia de desarrollador
+    Utiliza gitcommit para realizar commits basado en el estandar de commit de conventionalcommits
+    mas informacion en: https://www.conventionalcommits.org/en/v1.0.0/#summary
 
 ## PROXIMAS ACTIVIDADES
 
