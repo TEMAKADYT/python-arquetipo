@@ -2,15 +2,16 @@
   pip install -r requirements.txt
 
 # Start server
-  sanic server --dev
+  sanic --debug web.server:app
+  open http://localhost:8000/read-api for graphql introspection
 
 # Freeze requirements
   pip install pipreqs
   pipreqs .
 
 # Initializing Migrations (only once when the project is created)
-  aerich init --location infraestructure/migrations -t config.TORTOISE_ORM
-  python init.py
+  aerich init --location database/tortoiseimpl/migrations -t config.TORTOISE_ORM
+  python database/tortoiseimpl/init.py
   aerich init-db
 
 # Create Migrations
@@ -67,8 +68,13 @@ Estructura del proyecto
 [ 40% ] Implementar queries
 [ 20% ] Diseñar mutaciones
 [ 20% ] Implementar mutaciones
+[] Paginacion
+[] Filtrado de informacion
+[] Autenticacion
+[] Esquema de permisos
 
 [ X ] Refactorizacion Strawberry graphQL
+[ X ] Docs, add conventional commit usage
 
 [ ] Diseñar pruebas
 [ ] Implementar pruebas

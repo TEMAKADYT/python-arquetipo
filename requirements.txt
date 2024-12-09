@@ -5,3 +5,5 @@ pytest==8.3.3
 pytest-asyncio==0.24.0
 sanic-testing==24.6.0
 conventional-commit==0.4.2
+pydantic==2.10.1
+dependency-injector==4.43.0
