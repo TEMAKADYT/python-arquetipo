@@ -1,5 +1,6 @@
-from database.tortoise.models.transaction_model import TransactionModel
+from database.tortoiseimpl.models.transaction_model import TransactionModel
 from domain.entities.transaction_entity import TransactionEntity
+from tortoise.exceptions import ParamsError
 
 def transactionFromModel(transactionModel : TransactionModel):
     return TransactionEntity(
@@ -13,4 +14,8 @@ def transactionFromModel(transactionModel : TransactionModel):
 
 
 def transactionsFromQuerySet(queryset):
-    return [transactionFromModel(transaction) for transaction in queryset]
+    try:
+        return [transactionFromModel(transaction) for transaction in queryset]
+    except ParamsError:
+        print("transactionsFromQuerySet: ParamsError")
+        return []

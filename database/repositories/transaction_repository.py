@@ -1,5 +1,5 @@
-from domain.entities.TransactionEntity import TransactionEntity
-from database.tortoise.models import TransactionModel
+from domain.entities.transaction_entity import TransactionEntity
+from database.tortoiseimpl.models.transaction_model import TransactionModel
 from database.builders.transaction_builder import transactionFromModel
 from database.builders.transaction_builder import transactionsFromQuerySet
 
@@ -18,15 +18,15 @@ class TransactionRepository:
         return transactionFromModel(new_record)
 
     async def get_list(self) -> list:
-        all = TransactionModel.all()
+        all = await TransactionModel.all()
         return transactionsFromQuerySet(all)
 
-    async def get_by_id(self, transaction_id: int) -> TransactionEntity:
-        record = TransactionModel.get(id=transaction_id)
+    async def get_one_by_id(self, transaction_id: int) -> TransactionEntity:
+        record = await TransactionModel.get(id=transaction_id)
         return transactionFromModel(record)
 
     async def remove(self, transaction_id: int) -> None:
-        return TransactionModel.get(id=transaction_id).soft_delete()
+        return await TransactionModel.get(id=transaction_id).soft_delete()
 
     async def restore(self, transaction_id: int) -> None:
-        return TransactionModel.get(id=transaction_id).restore()
+        return await TransactionModel.get(id=transaction_id).restore()

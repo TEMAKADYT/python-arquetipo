@@ -1,6 +1,18 @@
 import strawberry
 from typing import Optional
 
+
+@strawberry.type
+class TransactionType():
+    id: Optional[int]
+    amount: float
+    type: str
+    account: str
+    subaccount: str
+    taxable: bool
+    description: str
+    date: str
+
 @strawberry.type
 class BankAccountType():
     name: str

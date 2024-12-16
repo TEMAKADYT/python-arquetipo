@@ -17,4 +17,8 @@ def bankAccountFromModel(bankAccountModel : BankAccountModel):
     )
 
 def bankAccountsFromQuerySet(queryset):
-    return [bankAccountFromModel(transaction) for transaction in queryset]
+    try:
+        return [bankAccountFromModel(transaction) for transaction in queryset]
+    except ParamsError:
+        print("transactionsFromQuerySet: ParamsError")
+        return []
