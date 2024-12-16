@@ -10,6 +10,8 @@ from domain.entities.bank_account_entity import BankAccountEntity
 from domain.entities.transaction_entity import TransactionEntity
 from web.graphql.inputs.transaction_inputs import NewTransactionInput
 from web.graphql.inputs.transaction_inputs import UpdateTransactionInput
+from typing import AsyncGenerator
+import asyncio
 
 @strawberry.type
 class Mutation:
@@ -72,6 +74,15 @@ class Mutation:
         return updated
 
 @strawberry.type
+class Subscription:
+    @strawberry.subscription
+    async def count(self, target: int = 100) -> AsyncGenerator[int, None]:
+        for i in range(target):
+            yield i
+            await asyncio.sleep(0.5)
+
+
+@strawberry.type
 class Query:
     list_bank_accounts: typing.List[BankAccountType] = strawberry.field(resolver=get_bank_accounts)
     get_bank_account: BankAccountType = strawberry.field(resolver=get_bankaccount_by_id)
@@ -79,4 +90,4 @@ class Query:
     list_transactions: typing.List[TransactionType] = strawberry.field(resolver=get_transactions)
     get_transaction: TransactionType = strawberry.field(resolver=get_transaction_by_id)
 
-schema = strawberry.Schema(query=Query, mutation=Mutation)
+schema = strawberry.Schema(query=Query, mutation=Mutation, subscription=Subscription)

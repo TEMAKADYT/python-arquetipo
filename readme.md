@@ -2,8 +2,15 @@
   pip install -r requirements.txt
 
 # Start server
-  sanic --debug web.server:app
-  open http://localhost:8000/read-api for graphql introspection
+  sanic --debug web.server:create_app
+  open http://localhost:8000/gql for graphql introspection
+
+# Start asgi server
+  # WEB
+  gunicorn web.server:create_app --bind 0.0.0.0:8000 --worker-class uvicorn.workers.UvicornWorker
+
+  # WEBSOCKET
+  gunicorn web.asgi_ws:wsapp --bind 0.0.0.0:8010 --worker-class uvicorn.workers.UvicornWorker
 
 # Freeze requirements
   pip install pipreqs
@@ -60,3 +67,8 @@
 
 ## CLEAN CACHE
     find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf
+
+
+
+# pip install 'strawberry-graphql[debug-server]'
+# pip install 'tortoise-orm[aiosqlite]'
