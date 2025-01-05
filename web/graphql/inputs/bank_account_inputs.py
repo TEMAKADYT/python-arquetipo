@@ -5,6 +5,7 @@ from web.graphql.enums.enums import BankAccountTypeEnum
 class NewBankAccountInput:
     name: str
     bank_name: str
+    color: str
     account_type: BankAccountTypeEnum
     balance: float
 
@@ -14,5 +15,6 @@ class UpdateBankAccountInput:
     id: int
     name: str
     bank_name: str
+    color: str
     account_type: BankAccountTypeEnum
     balance: float

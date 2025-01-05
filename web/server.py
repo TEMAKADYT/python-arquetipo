@@ -1,3 +1,4 @@
+from sanic_ext import Extend
 from sanic import Sanic, Request, Websocket
 from strawberry.sanic.views import GraphQLView
 from strawberry.subscriptions import GRAPHQL_TRANSPORT_WS_PROTOCOL, GRAPHQL_WS_PROTOCOL
@@ -30,6 +31,9 @@ def create_app() -> Sanic:
     # APP CREATE
     app = Sanic('sanic_app')
     app.ctx.container = container
+
+    app.config.CORS_ORIGINS = "http://localhost:3000,http://localhost:3010,http://localhost:5173"
+    Extend(app)
 
     # Load Models in app
     register_tortoise(

@@ -14,6 +14,7 @@ class BankAccountPresenter:
             bank_name=self.data.bank_name,
             account_type=self.data.account_type,
             balance=self.data.balance,
+            color=self.data.color,
             created_at=self.data.created_at,
             updated_at=self.data.updated_at,
             deleted_at=self.data.deleted_at
@@ -30,6 +31,7 @@ class BankAccountListPresenter:
         bank_name=it.bank_name,
         account_type=it.account_type,
         balance=it.balance,
+        color=it.color,
         created_at=it.created_at,
         updated_at=it.updated_at,
         deleted_at=it.deleted_at) for it in self.data]

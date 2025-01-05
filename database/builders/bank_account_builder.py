@@ -11,6 +11,7 @@ def bankAccountFromModel(bankAccountModel : BankAccountModel):
         bank_name=bankAccountModel.bank_name,
         account_type=bankAccountModel.account_type,
         balance=bankAccountModel.balance,
+        color=bankAccountModel.color,
         created_at=bankAccountModel.created_at,
         updated_at=bankAccountModel.updated_at,
         # deleted_at=bankAccountModel.deleted_at TODO REVIEW

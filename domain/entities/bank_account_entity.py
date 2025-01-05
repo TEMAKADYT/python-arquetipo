@@ -10,6 +10,8 @@ class BankAccountEntity(ABCEntity):
     account_type: str
     balance: float = 0.0
 
+    color: Optional[str] = "#facc15"
+
     id: Optional[int] = None
     created_at: Optional[str] = None
     updated_at: Optional[str] = None

@@ -19,7 +19,8 @@ class BankAccountType():
     bank_name: str
     account_type: str
     balance: float
-    id: Optional[int]
+    id: Optional[str]
+    color: Optional[str]
     created_at: Optional[str]
     updated_at: Optional[str]
     deleted_at: Optional[str]

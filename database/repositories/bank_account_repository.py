@@ -12,7 +12,8 @@ class BankAccountRepository(CRUDRepositoryInterface):
                 name=entity.name,
                 bank_name=entity.bank_name,
                 account_type=entity.account_type,
-                balance=entity.balance
+                balance=entity.balance,
+                color=entity.color
             )
             await model.save()
             return bankAccountFromModel(model)
@@ -38,6 +39,7 @@ class BankAccountRepository(CRUDRepositoryInterface):
         record.bank_name = entity.bank_name
         record.account_type = entity.account_type
         record.balance = entity.balance
+        record.color = entity.color
         await record.save()
         return bankAccountFromModel(record)
 

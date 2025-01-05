@@ -7,6 +7,7 @@ class BankAccountModel(BaseModel):
     name = fields.CharField(max_length=100, null=False)
     bank_name = fields.CharField(max_length=100, null=False)
     account_type = fields.CharField(max_length=10, null=False)
+    color = fields.CharField(max_length=10, null=False, default="#facc15")
     balance = fields.FloatField(default=0.0)
 
     def __str__(self):

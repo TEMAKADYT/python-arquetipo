@@ -23,7 +23,8 @@ class Mutation:
            name=newBankAccountInput.name,
            bank_name=newBankAccountInput.bank_name,
            account_type=newBankAccountInput.account_type.value,
-           balance=newBankAccountInput.balance)
+           balance=newBankAccountInput.balance,
+           color=newBankAccountInput.color)
 
         saved = await create_bank_account(entity)
         return saved
@@ -34,23 +35,24 @@ class Mutation:
         return True
 
     @strawberry.mutation
-    async def update_bank_account(self, updateBankAccount : UpdateBankAccountInput) -> BankAccountType | None:
-        entity = BankAccountEntity(id=updateBankAccount.id,
-           name=updateBankAccount.name,
-           bank_name=updateBankAccount.bank_name,
-           account_type=updateBankAccount.account_type.value,
-           balance=updateBankAccount.balance)
+    async def update_bank_account(self, updateBankAccountInput : UpdateBankAccountInput) -> BankAccountType | None:
+        entity = BankAccountEntity(id=updateBankAccountInput.id,
+           name=updateBankAccountInput.name,
+           bank_name=updateBankAccountInput.bank_name,
+           account_type=updateBankAccountInput.account_type.value,
+           balance=updateBankAccountInput.balance,
+           color=updateBankAccountInput.color)
         updated = await update_bank_account(entity)
         return updated
 
     @strawberry.mutation
-    async def create_transaction(self, newBankAccountInput : NewTransactionInput) -> TransactionType | None:
+    async def create_transaction(self, newTransactionInput : NewTransactionInput) -> TransactionType | None:
         entity = TransactionEntity(
-            bank_account=newBankAccountInput.bank_account_id,
-            transaction_type=newBankAccountInput.transaction_type.value,
-            amount=newBankAccountInput.amount,
-            description=newBankAccountInput.description,
-            date=newBankAccountInput.date
+            bank_account=newTransactionInput.bank_account_id,
+            transaction_type=newTransactionInput.transaction_type.value,
+            amount=newTransactionInput.amount,
+            description=newTransactionInput.description,
+            date=newTransactionInput.date
         )
         saved = await create_transaction(entity)
         return saved
@@ -61,14 +63,14 @@ class Mutation:
         return True
 
     @strawberry.mutation
-    async def update_transaction(self, updateBankAccount : UpdateTransactionInput) -> TransactionType | None:
+    async def update_transaction(self, updateTranasctionInput : UpdateTransactionInput) -> TransactionType | None:
         entity = TransactionEntity(
-            id=updateBankAccount.id,
-            bank_account=updateBankAccount.bank_account_id,
-            transaction_type=updateBankAccount.transaction_type.value,
-            amount=updateBankAccount.amount,
-            description=updateBankAccount.description,
-            date=updateBankAccount.date
+            id=updateTranasctionInput.id,
+            bank_account=updateTranasctionInput.bank_account_id,
+            transaction_type=updateTranasctionInput.transaction_type.value,
+            amount=updateTranasctionInput.amount,
+            description=updateTranasctionInput.description,
+            date=updateTranasctionInput.date
         )
         updated = await update_transaction(entity)
         return updated
